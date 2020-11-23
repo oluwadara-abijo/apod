@@ -2,6 +2,7 @@ package com.dara.apod
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dara.apod.model.Picture
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -11,6 +12,10 @@ class MainActivity : AppCompatActivity() {
 
         val data = this.readJsonFile("data.json")
         tv_hello.text = data
+
+        val pictures = jsonToObject<List<Picture>>(data)
+        println("Result - $pictures")
+
 
     }
 }
