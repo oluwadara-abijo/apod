@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.dara.apod.model.Picture
 import kotlinx.android.synthetic.main.list_item_picture.view.*
 
-class PictureAdapter(private val pictures: List<Picture>, private val context: Context) :
+class PictureAdapter(private var pictures: List<Picture>, private val context: Context) :
     RecyclerView.Adapter<PictureAdapter.PictureViewHolder>() {
 
     inner class PictureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,6 +35,11 @@ class PictureAdapter(private val pictures: List<Picture>, private val context: C
     override fun onBindViewHolder(holder: PictureViewHolder, position: Int) {
         val currentPicture = pictures[position]
         holder.bind(currentPicture)
+    }
+
+    internal fun setPictures(transactions: List<Picture>) {
+        this.pictures = transactions
+        notifyDataSetChanged()
     }
 
 }
