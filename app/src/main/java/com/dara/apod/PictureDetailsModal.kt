@@ -15,7 +15,7 @@ class PictureDetailsModal(val picture: Picture) : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = View.inflate(requireContext(), R.layout.modal_picture_details, view_root)
+        val view = View.inflate(requireContext(), R.layout.modal_picture_details, root_view)
         view.tv_title.text = picture.title
         view.tv_date.text = picture.date
         view.tv_copyright.text = picture.copyright

@@ -7,8 +7,8 @@
     <ImageView
         android:id="@+id/img_picture_detail"
         android:layout_width="match_parent"
-        android:adjustViewBounds="true"
         android:layout_height="match_parent"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/picture"
         android:src="@drawable/sample" />
 
@@ -16,6 +16,7 @@
         android:id="@+id/img_info"
         style="@style/IconsStyle"
         android:layout_margin="@dimen/margin_24"
+        android:background="?attr/selectableItemBackground"
         android:contentDescription="@string/picture_info"
         android:src="@drawable/ic_baseline_info_24"
         app:layout_constraintEnd_toEndOf="@id/img_picture_detail"
