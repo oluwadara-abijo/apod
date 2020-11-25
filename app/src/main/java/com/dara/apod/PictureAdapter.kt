@@ -6,25 +6,54 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.dara.apod.model.Picture
+import kotlinx.android.synthetic.main.list_item_detail.view.*
 import kotlinx.android.synthetic.main.list_item_picture.view.*
 
-class PictureAdapter(private var pictures: List<Picture>, private val context: Context) :
-    RecyclerView.Adapter<PictureAdapter.PictureViewHolder>() {
+class PictureAdapter(
+    private var pictures: List<Picture>,
+    private val context: Context,
+    private var isForList: Boolean,
+    private val clickListener: ItemClickListener? = null
+) : RecyclerView.Adapter<PictureAdapter.PictureViewHolder>() {
 
-    inner class PictureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    //Class to handle item clicks
+    interface ItemClickListener {
+        fun onItemClick(picture: Picture)
+    }
+
+    inner class PictureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+
         fun bind(picture: Picture) {
-            Glide.with(context).load(picture.url).placeholder(R.drawable.placeholder)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(itemView.img_picture)
+            if (isForList) {
+                Glide.with(context).load(picture.url).placeholder(R.drawable.placeholder)
+                    .into(itemView.img_picture)
+                itemView.setOnClickListener(this)
+            } else {
+                itemView.tv_title.text = picture.title
+                itemView.tv_date.text = picture.date
+                itemView.tv_copyright.text = picture.copyright
+                itemView.tv_explanation.text = picture.explanation
+                Glide.with(context).load(picture.url).placeholder(R.drawable.placeholder)
+                    .into(itemView.img_picture_detail)
+            }
+        }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            val clickedPicture = pictures[position]
+            clickListener?.onItemClick(clickedPicture)
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PictureViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.list_item_picture, parent, false)
+        val view = when (isForList) {
+            true -> inflater.inflate(R.layout.list_item_picture, parent, false)
+            else -> inflater.inflate(R.layout.list_item_detail, parent, false)
+        }
         return PictureViewHolder(view)
     }
 
