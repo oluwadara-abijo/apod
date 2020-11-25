@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.dara.apod.DetailActivity.Companion.POSITION
 import com.dara.apod.model.Picture
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -32,16 +33,15 @@ class MainActivity : AppCompatActivity(), PictureAdapter.ItemClickListener {
             adapter = pictureAdapter
         }
         viewModel.pictures.observe(this, Observer {
-            pictureAdapter.setPictures(it)
+            pictures = it
+            pictureAdapter.setPictures(pictures)
         })
     }
 
-//    override fun onItemClick(picture: Picture, shouldShowInfo: Boolean) {
-//        TODO("Not yet implemented")
-//    }
-
     override fun onItemClick(picture: Picture) {
-        startActivity(Intent(this, DetailActivity::class.java))
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(POSITION, pictures.indexOf(picture))
+        startActivity(intent)
     }
 
 }

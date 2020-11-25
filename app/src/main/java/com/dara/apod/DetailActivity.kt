@@ -12,14 +12,21 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity(), PictureAdapter.ItemClickListener {
 
+    companion object {
+        const val POSITION = "position"
+    }
+
     private val viewModel by viewModels<PicturesViewModel>()
     private lateinit var pictureAdapter: PictureAdapter
     private lateinit var pictures: List<Picture>
+    private var position: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        // Get intent and extras
+        position = intent.getIntExtra(POSITION, 0)
         setupRecyclerview()
     }
 
@@ -35,6 +42,8 @@ class DetailActivity : AppCompatActivity(), PictureAdapter.ItemClickListener {
         snapHelper.attachToRecyclerView(rv_pictures)
         viewModel.pictures.observe(this, Observer {
             pictureAdapter.setPictures(it)
+            linearLayoutManager.scrollToPosition(position)
+
         })
     }
 
