@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dara.apod.model.Picture
 import kotlinx.android.synthetic.main.activity_detail.*
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), PictureAdapter.ItemClickListener {
 
     private val viewModel by viewModels<PicturesViewModel>()
     private lateinit var pictureAdapter: PictureAdapter
@@ -26,7 +26,7 @@ class DetailActivity : AppCompatActivity() {
     private fun setupRecyclerview() {
         pictures = listOf()
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        pictureAdapter = PictureAdapter(pictures, this, false, null)
+        pictureAdapter = PictureAdapter(pictures, this, false, this)
         rv_pictures.apply {
             layoutManager = linearLayoutManager
             adapter = pictureAdapter
@@ -36,6 +36,11 @@ class DetailActivity : AppCompatActivity() {
         viewModel.pictures.observe(this, Observer {
             pictureAdapter.setPictures(it)
         })
+    }
+
+    override fun onItemClick(picture: Picture) {
+        val modal = PictureDetailsModal(picture)
+        modal.show(this.supportFragmentManager, modal.tag)
     }
 
 }

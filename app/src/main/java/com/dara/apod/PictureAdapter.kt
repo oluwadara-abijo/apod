@@ -14,7 +14,7 @@ class PictureAdapter(
     private var pictures: List<Picture>,
     private val context: Context,
     private var isForList: Boolean,
-    private val clickListener: ItemClickListener? = null
+    private val clickListener: ItemClickListener
 ) : RecyclerView.Adapter<PictureAdapter.PictureViewHolder>() {
 
     //Class to handle item clicks
@@ -31,10 +31,7 @@ class PictureAdapter(
                     .into(itemView.img_picture)
                 itemView.setOnClickListener(this)
             } else {
-                itemView.tv_title.text = picture.title
-                itemView.tv_date.text = picture.date
-                itemView.tv_copyright.text = picture.copyright
-                itemView.tv_explanation.text = picture.explanation
+                itemView.img_info.setOnClickListener(this)
                 Glide.with(context).load(picture.url).placeholder(R.drawable.placeholder)
                     .into(itemView.img_picture_detail)
             }
@@ -43,7 +40,7 @@ class PictureAdapter(
         override fun onClick(v: View?) {
             val position = adapterPosition
             val clickedPicture = pictures[position]
-            clickListener?.onItemClick(clickedPicture)
+            clickListener.onItemClick(clickedPicture)
         }
 
     }

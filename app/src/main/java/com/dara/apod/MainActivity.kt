@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity(), PictureAdapter.ItemClickListener {
         })
     }
 
+//    override fun onItemClick(picture: Picture, shouldShowInfo: Boolean) {
+//        TODO("Not yet implemented")
+//    }
+
     override fun onItemClick(picture: Picture) {
         startActivity(Intent(this, DetailActivity::class.java))
     }
