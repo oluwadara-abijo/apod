@@ -20,7 +20,7 @@ class PictureDetailsModal(val picture: Picture) : BottomSheetDialogFragment() {
         view.tv_date.text = picture.date
         view.tv_copyright.text = picture.copyright
         view.tv_explanation.text = picture.explanation
-        if (picture.copyright.isEmpty()) {
+        if (picture.copyright.isNullOrEmpty()) {
             view.tv_copyright.visibility = View.GONE
         }
         return view

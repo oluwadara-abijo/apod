@@ -1,7 +1,7 @@
 package com.dara.apod.model
 
 data class Picture(
-    val copyright: String,
+    val copyright: String?,
     val date: String,
     val explanation: String,
     val hdurl: String,
