@@ -1,10 +1,12 @@
-package com.dara.apod
+package com.dara.apod.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.dara.apod.jsonToObject
 import com.dara.apod.model.Picture
+import com.dara.apod.readJsonFile
 
 /**
  * Helper class for managing UI-related data (i.e the list of pictures)

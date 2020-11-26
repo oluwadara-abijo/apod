@@ -1,9 +1,10 @@
-package com.dara.apod
+package com.dara.apod.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.dara.apod.R
 import com.dara.apod.model.Picture
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.modal_picture_details.*

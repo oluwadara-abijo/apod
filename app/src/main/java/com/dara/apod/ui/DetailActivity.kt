@@ -1,4 +1,4 @@
-package com.dara.apod
+package com.dara.apod.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.dara.apod.viewmodel.PicturesViewModel
+import com.dara.apod.R
 import com.dara.apod.model.Picture
 import kotlinx.android.synthetic.main.activity_detail.*
 

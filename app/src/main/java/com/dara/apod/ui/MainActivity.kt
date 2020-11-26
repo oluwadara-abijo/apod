@@ -1,4 +1,4 @@
-package com.dara.apod
+package com.dara.apod.ui
 
 import android.app.ActivityOptions
 import android.content.Intent
@@ -7,7 +7,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import com.dara.apod.DetailActivity.Companion.POSITION
+import com.dara.apod.viewmodel.PicturesViewModel
+import com.dara.apod.R
+import com.dara.apod.ui.DetailActivity.Companion.POSITION
 import com.dara.apod.model.Picture
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.list_item_picture.*
