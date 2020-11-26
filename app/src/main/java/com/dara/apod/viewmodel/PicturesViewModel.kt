@@ -20,6 +20,8 @@ class PicturesViewModel(application: Application) : AndroidViewModel(application
     private fun loadPictures(): List<Picture> {
         val data = getApplication<Application>().readJsonFile("data.json")
         val pictureList = jsonToObject<List<Picture>>(data)
+
+        // Reverse picture list to show the latest first
         return pictureList.reversed()
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root_view"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +16,6 @@
             style="@style/TextStyle"
             android:layout_width="match_parent"
             android:gravity="center"
-            android:text="Starburst Galaxy M94 from Hubble"
             android:textColor="#0C9543"
             android:textSize="@dimen/big_text_size"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,19 +26,38 @@
             style="@style/TextStyle"
             android:layout_marginTop="@dimen/default_margin"
             android:drawablePadding="4dp"
-            android:text="2020-12-31"
             app:drawableStartCompat="@drawable/ic_baseline_calendar_today_24"
+            app:layout_constraintEnd_toStartOf="@id/divider"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:contentDescription="@string/copyright"
+            android:src="@drawable/ic_baseline_copyright_24"
+            app:layout_constraintStart_toEndOf="@id/divider"
+            app:layout_constraintTop_toTopOf="@id/tv_date" />
 
         <TextView
             android:id="@+id/tv_copyright"
             style="@style/TextStyle"
-            android:drawablePadding="4dp"
-            android:text="Steve Mazlin"
-            app:drawableStartCompat="@drawable/ic_baseline_copyright_24"
+            android:layout_width="0dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_date" />
+            app:layout_constraintStart_toEndOf="@id/img_copyright"
+            app:layout_constraintTop_toTopOf="@+id/img_copyright" />
 
         <TextView
             android:id="@+id/tv_explanation_label"
@@ -49,14 +67,13 @@
             android:textAllCaps="true"
             android:textColor="@color/colorSecondaryText"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_date" />
+            app:layout_constraintTop_toBottomOf="@id/tv_copyright" />
 
         <TextView
             android:id="@+id/tv_explanation"
             style="@style/TextStyle"
             android:layout_marginTop="4dp"
             android:lineSpacingMultiplier="1.5"
-            android:text="Why does this galaxy have a ring of bright blue stars?  Beautiful island universe Messier 94 lies a mere 15 million light-years distant in the northern constellation of the Hunting Dogs (Canes Venatici). A popular target for Earth-based astronomers, the face-on spiral galaxy is about 30,000 light-years across, with spiral arms sweeping through the outskirts of its broad disk. But this Hubble Space Telescope field of view spans about 7,000 light-years across M94's central region. The featured close-up highlights the galaxy's compact, bright nucleus, prominent inner dust lanes, and the remarkable bluish ring of young massive stars. The ring stars are all likely less than 10 million years old, indicating that M94 is a starburst galaxy that is experiencing an epoch of rapid star formation from inspiraling gas. The circular ripple of blue stars is likely a wave propagating outward, having been triggered by the gravity and rotation of a oval matter distributions. Because M94 is relatively nearby, astronomers can better explore details of its starburst ring.    Astrophysicists: Browse 2,000+ codes in the Astrophysics Source Code Library"
             app:layout_constraintStart_toStartOf="@+id/tv_explanation_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_explanation_label" />
 
