@@ -29,7 +29,7 @@ class PictureAdapter(
             if (isForList) {
                 Glide.with(context).load(picture.url).placeholder(R.drawable.placeholder)
                     .into(itemView.img_picture)
-                itemView.setOnClickListener(this)
+                itemView.frame_layout.setOnClickListener(this)
             } else {
                 itemView.img_info.setOnClickListener(this)
                 Glide.with(context).load(picture.url).placeholder(R.drawable.placeholder)
