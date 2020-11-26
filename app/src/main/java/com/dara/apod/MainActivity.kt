@@ -1,5 +1,6 @@
 package com.dara.apod
 
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.dara.apod.DetailActivity.Companion.POSITION
 import com.dara.apod.model.Picture
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.list_item_picture.*
 
 class MainActivity : AppCompatActivity(), PictureAdapter.ItemClickListener {
 
@@ -41,7 +43,12 @@ class MainActivity : AppCompatActivity(), PictureAdapter.ItemClickListener {
     override fun onItemClick(picture: Picture) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(POSITION, pictures.indexOf(picture))
-        startActivity(intent)
+        val options = ActivityOptions.makeSceneTransitionAnimation(
+            this,
+            img_picture,
+            img_picture.transitionName
+        )
+        startActivity(intent, options.toBundle())
     }
 
 }

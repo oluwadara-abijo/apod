@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/frame_layout"
     android:layout_margin="4dp"
-    android:foreground="?attr/selectableItemBackground"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/img_picture"
@@ -14,6 +14,7 @@
         android:layout_height="@dimen/image_height"
         android:contentDescription="@string/picture"
         android:scaleType="centerCrop"
-        android:src="@drawable/sample" />
+        android:src="@drawable/sample"
+        android:transitionName="@string/list_detail_transition" />
 
 </FrameLayout>
