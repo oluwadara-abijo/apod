@@ -14,7 +14,6 @@
         android:layout_height="@dimen/image_height"
         android:contentDescription="@string/picture"
         android:scaleType="centerCrop"
-        android:src="@drawable/sample"
         android:transitionName="@string/list_detail_transition" />
 
 </FrameLayout>

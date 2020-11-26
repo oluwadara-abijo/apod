@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), PictureAdapter.ItemClickListener {
             layoutManager = gridlayoutManager
             adapter = pictureAdapter
         }
-        viewModel.pictures.observe(this, Observer {
+        viewModel.pictures.observe(this, {
             pictures = it
             pictureAdapter.setPictures(pictures)
         })

@@ -42,7 +42,7 @@ class DetailActivity : AppCompatActivity(), PictureAdapter.ItemClickListener {
         }
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(rv_pictures)
-        viewModel.pictures.observe(this, Observer {
+        viewModel.pictures.observe(this, {
             pictureAdapter.setPictures(it)
             linearLayoutManager.scrollToPosition(position)
 

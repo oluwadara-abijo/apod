@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:contentDescription="@string/picture"
-        android:src="@drawable/sample"
         android:transitionName="@string/list_detail_transition" />
 
     <ImageView
